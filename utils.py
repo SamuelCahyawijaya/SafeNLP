@@ -34,7 +34,7 @@ def load_tokenizer_and_model(args, from_tf=False):
     pretrained_model = args.model
     pretrained_adapter = ''
     if 'bactrian' in pretrained_model:
-        mpretrained_model pretrained_adapter = pretrained_model.split('---')
+        pretrained_model, pretrained_adapter = pretrained_model.split('---')
 
     if args.config:
         config = AutoConfig.from_pretrained(args.config)
