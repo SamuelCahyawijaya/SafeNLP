@@ -45,6 +45,8 @@ def load_tokenizer_and_model(args, from_tf=False):
     # Load Masked Language Model Head
     if args.lmHead == 'mlm':
         model = AutoModelForMaskedLM.from_pretrained(pretrained_model, from_tf=from_tf, config=config, trust_remote_code=True)
+        if torch.cuda.is_available():
+            model.to('cuda')
     # load Causal Language Model Head
     else:
         if pretrained_adapter != "":
@@ -60,7 +62,5 @@ def load_tokenizer_and_model(args, from_tf=False):
             tokenizer.pad_token = tokenizer.eos_token # Use EOS to pad label
     
     model = model.eval()
-    if torch.cuda.is_available():
-        model.to('cuda')
 
     return tokenizer, model
