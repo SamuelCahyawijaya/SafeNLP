@@ -6,7 +6,7 @@ Utility fuctions
 
 import argparse
 import torch
-from transformers import AutoConfig, AutoModelForMaskedLM, AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoConfig, AutoModelForMaskedLM, AutoModelForCausalLM, AutoModelForSeq2SeqLM, AutoTokenizer
 
 def parse_args():
     parser = argparse.ArgumentParser()
