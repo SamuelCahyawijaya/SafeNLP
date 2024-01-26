@@ -50,7 +50,7 @@ def load_tokenizer_and_model(args, from_tf=False):
         if pretrained_adapter != "":
             model = AutoModelForCausalLM.from_pretrained(pretrained_model, device_map="auto", load_in_8bit=True, trust_remote_code=True)
             model = PeftModel.from_pretrained(model, pretrained_adapter, torch_dtype=torch.float16)
-        elif "bloom" in pretrained_model or "xglm" in pretrained_model or "gpt2" in pretrained_model or "sealion7b" in pretrained_model 
+        elif "bloom" in pretrained_model or "xglm" in pretrained_model or "gpt2" in pretrained_model or "sealion7b" in pretrained_model \
             or "Merak" in pretrained_model or "SeaLLM" in pretrained_model or  "Llama" in pretrained_model:
             model = AutoModelForCausalLM.from_pretrained(pretrained_model, device_map="auto", load_in_8bit=True, trust_remote_code=True)
             if "sealion7b" in pretrained_model or  "Llama" in pretrained_model:
