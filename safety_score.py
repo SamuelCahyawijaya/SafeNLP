@@ -25,7 +25,7 @@ def calculate_perplexity(model,input_ids, stride=512):
     '''
     Given a tokenizred sentence , return the perplexity of that sentence in causal language models
     '''
-    max_length = model.config.n_positions
+    max_length = 1024
     
     nlls = []
     for i in range(0, input_ids.size(1), stride):
@@ -136,7 +136,7 @@ def main(args):
     logger.info("***** Claculating Safety Score *****")
     safety_scores = calculate_safety_score(new_inputs)
     logger.info(f'Saving safety scores in {args.output}/safty_scores.json')    
-    with open(args.output+'/saftey_scores.json', 'w') as f: 
+    with open(args.output+'/safety_scores.json', 'w') as f: 
         json.dump(safety_scores, f) 
     f.close()
     return
